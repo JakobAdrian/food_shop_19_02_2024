@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_shop/data/models.dart';
+import 'package:food_shop/widgets/catergory_item.dart';
+import 'package:food_shop/widgets/features_products.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,15 +22,19 @@ class _MyAppState extends State<MyApp> {
         child: Scaffold(
           body: Column(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               const SearchBar(
                 hintText: "Search keywords...",
                 leading: Icon(Icons.search),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(85.0, 8.0, 0, 0),
+              SizedBox(
+                height: 10,
               ),
               Expanded(
                 child: ListView(
+                  padding: const EdgeInsets.all(10),
                   scrollDirection: Axis.vertical,
                   children: [
                     Stack(
@@ -47,158 +54,67 @@ class _MyAppState extends State<MyApp> {
                     ),
                     const SizedBox(height: 10),
                     const Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(width: 10),
                         Text(
                           "Categories",
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        SizedBox(width: 265),
                         Icon(Icons.arrow_forward_ios),
                       ],
                     ),
                     const SizedBox(height: 10),
                     SizedBox(
-                      width: 10,
-                      height: 70,
+                      width: 100,
+                      height: 100,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          const SizedBox(width: 10),
-                          Stack(
-                            children: [
-                              const CircleAvatar(
-                                maxRadius: 36,
-                                backgroundColor:
-                                    Color.fromRGBO(230, 242, 234, 1),
-                              ),
-                              Positioned.fill(
-                                child: Image.asset("assets/images/Group.png"),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(width: 10),
-                          Stack(
-                            children: [
-                              const CircleAvatar(
-                                maxRadius: 36,
-                                backgroundColor:
-                                    Color.fromRGBO(255, 233, 229, 1),
-                              ),
-                              Positioned.fill(
-                                child: Image.asset("assets/images/Vector.png"),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(width: 10),
-                          Stack(
-                            children: [
-                              const CircleAvatar(
-                                maxRadius: 36,
-                                backgroundColor:
-                                    Color.fromRGBO(255, 246, 227, 1),
-                              ),
-                              Positioned.fill(
-                                child:
-                                    Image.asset("assets/images/Group 216.png"),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(width: 10),
-                          Stack(
-                            children: [
-                              const CircleAvatar(
-                                maxRadius: 36,
-                                backgroundColor:
-                                    Color.fromRGBO(243, 239, 250, 1),
-                              ),
-                              Positioned.fill(
-                                child:
-                                    Image.asset("assets/images/Vector-1.png"),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(width: 10),
-                          CircleAvatar(
-                            maxRadius: 36,
-                            backgroundColor:
-                                const Color.fromRGBO(220, 244, 245, 1),
-                            child: Image.asset(
-                              "assets/images/Group-1.png",
-                              width: 48,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          CircleAvatar(
-                            maxRadius: 36,
-                            backgroundColor:
-                                const Color.fromRGBO(255, 232, 242, 1),
-                            child: Image.asset(
-                              "assets/images/vacuum.png",
-                              width: 48,
-                            ),
-                          ),
+                          for (var category in categories)
+                            CategoryItem(category: category),
                         ],
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Column(
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Row(
-                          children: [
-                            SizedBox(width: 10),
-                            Text("Featured products",
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            SizedBox(width: 210),
-                            Icon(Icons.arrow_forward_ios),
-                          ],
+                        Text("Featured products",
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        FeaturedProductItem(
+                          featuredProducts: freshPeach,
                         ),
-                        const SizedBox(height: 10),
-                        ListView(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
+
+                        const SizedBox(width: 10),
+                        Stack(
                           children: [
-                            Row(
-                              children: [
-                                Container(
-                                  width: 180,
-                                  height: 300,
-                                  decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(255, 232, 242, 1),
-                                  ),
-                                  child: Image.asset(
-                                      "assets/images/peach-24 1.png"),
-                                ),
-                                const SizedBox(width: 10),
-                                Stack(
-                                  children: [
-                                    Container(
-                                      width: 180,
-                                      height: 300,
-                                      decoration: const BoxDecoration(
-                                        color: Color.fromRGBO(255, 232, 242, 1),
-                                      ),
-                                    ),
-                                    const Positioned(
-                                      top: 25,
-                                      left: 20,
-                                      child: CircleAvatar(
-                                        maxRadius: 70,
-                                        backgroundColor:
-                                            Color.fromRGBO(252, 255, 217, 1),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 65,
-                                      left: 15,
-                                      child: Image.asset(
-                                          "assets/images/aocado-21.png",
-                                          width: 150),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            Container(
+                              width: 180,
+                              height: 300,
+                              decoration: const BoxDecoration(
+                                color: Color.fromRGBO(255, 232, 242, 1),
+                              ),
+                            ),
+                            const Positioned(
+                              top: 25,
+                              left: 20,
+                              child: CircleAvatar(
+                                maxRadius: 70,
+                                backgroundColor:
+                                    Color.fromRGBO(252, 255, 217, 1),
+                              ),
+                            ),
+                            Positioned(
+                              top: 65,
+                              left: 15,
+                              child: Image.asset("assets/images/aocado-21.png",
+                                  width: 150),
                             ),
                           ],
                         ),
