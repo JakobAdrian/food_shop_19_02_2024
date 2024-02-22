@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:food_shop/data/models.dart';
 import 'package:food_shop/widgets/catergory_item.dart';
-import 'package:food_shop/widgets/features_products.dart';
+import 'package:food_shop/widgets/featured_products.dart';
+import 'package:food_shop/widgets/images_flow.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +31,7 @@ class _MyAppState extends State<MyApp> {
                 hintText: "Search keywords...",
                 leading: Icon(Icons.search),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Expanded(
@@ -37,21 +39,7 @@ class _MyAppState extends State<MyApp> {
                   padding: const EdgeInsets.all(10),
                   scrollDirection: Axis.vertical,
                   children: [
-                    Stack(
-                      children: [
-                        Image.asset("assets/images/background.png"),
-                        const Positioned(
-                          top: 140,
-                          left: 38,
-                          child: Text("20 % off on your \nfirst purchase",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              )),
-                        ),
-                      ],
-                    ),
+                    const ImagesFlow(),
                     const SizedBox(height: 10),
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,41 +73,16 @@ class _MyAppState extends State<MyApp> {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    Row(
+                    Wrap(
+                      runSpacing: 10,
+                      spacing: 10,
                       children: [
-                        FeaturedProductItem(
-                          featuredProducts: freshPeach,
-                        ),
-
-                        const SizedBox(width: 10),
-                        Stack(
-                          children: [
-                            Container(
-                              width: 180,
-                              height: 300,
-                              decoration: const BoxDecoration(
-                                color: Color.fromRGBO(255, 232, 242, 1),
-                              ),
-                            ),
-                            const Positioned(
-                              top: 25,
-                              left: 20,
-                              child: CircleAvatar(
-                                maxRadius: 70,
-                                backgroundColor:
-                                    Color.fromRGBO(252, 255, 217, 1),
-                              ),
-                            ),
-                            Positioned(
-                              top: 65,
-                              left: 15,
-                              child: Image.asset("assets/images/aocado-21.png",
-                                  width: 150),
-                            ),
-                          ],
-                        ),
+                        for (var featuredProduct in featuredProducts)
+                          FeaturedProductItem(
+                            featuredProducts: featuredProduct,
+                          ),
                       ],
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -139,3 +102,30 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+// Wrap(
+                    //   children: [
+                    //     FeaturedProductItem(
+                    //       featuredProducts: freshPeach,
+                    //     ),
+                    //     const SizedBox(width: 10),
+                    //     FeaturedProductItem(
+                    //       featuredProducts: avocado,
+                    //     ),
+                    //     const SizedBox(height: 50),
+                    //     FeaturedProductItem(
+                    //       featuredProducts: pineapple,
+                    //     ),
+                    //     const SizedBox(width: 10),
+                    //     FeaturedProductItem(
+                    //       featuredProducts: blackGrapes,
+                    //     ),
+                    //     const SizedBox(height: 50),
+                    //     FeaturedProductItem(
+                    //       featuredProducts: pomegranate,
+                    //     ),
+                    //     const SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     FeaturedProductItem(featuredProducts: freshBroccoli),
+                    //   ],
+                    // ),

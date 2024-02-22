@@ -14,12 +14,13 @@ class FeaturedProductItem extends StatelessWidget {
     return Column(
       children: [
         Stack(
+          alignment: Alignment.topCenter,
           children: [
             Container(
               width: 180,
               height: 300,
               decoration: const BoxDecoration(
-                color: Color.fromRGBO(255, 232, 242, 1),
+                color: Color.fromRGBO(232, 232, 232, 1),
               ),
             ),
             Positioned(
@@ -30,15 +31,22 @@ class FeaturedProductItem extends StatelessWidget {
                 backgroundColor: featuredProducts.color,
               ),
             ),
+            Positioned(top: 200, child: Text('\$ ${featuredProducts.price}')),
             Positioned(
-              top: 65,
-              left: 0,
-              child: Image.asset(featuredProducts.image, fit: BoxFit.contain),
+              top: 215,
+              child: Text((featuredProducts.title),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold)),
             ),
-            Text(featuredProducts.title),
+            Positioned(top: 240, child: Text(featuredProducts.unit)),
           ],
         ),
       ],
     );
   }
 }
+// Positioned(
+//               top: 65,
+//               left: 0,
+//               child: Image.asset(featuredProducts.image),
+//             ),

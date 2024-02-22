@@ -71,42 +71,42 @@ FeaturedProducts freshPeach = const FeaturedProducts(
   price: 8.00,
   unit: "dozen",
   image: "avocado-21.png",
-  color: Color.fromARGB(255, 255, 232, 191),
+  color: Color.fromARGB(255, 184, 110, 110),
 );
 FeaturedProducts avocado = const FeaturedProducts(
   title: "Avocado",
   price: 7.00,
   unit: "2.0 lbs",
   image: "avocado-21.png",
-  color: Color.fromARGB(255, 255, 232, 191),
+  color: Color.fromARGB(255, 210, 255, 180),
 );
 FeaturedProducts pineapple = const FeaturedProducts(
   title: "Pineapple",
   price: 9.90,
   unit: "1.50 lbs",
   image: "pineapple-pieces.png",
-  color: Color.fromARGB(255, 255, 232, 191),
+  color: Color.fromARGB(255, 215, 179, 117),
 );
 FeaturedProducts blackGrapes = const FeaturedProducts(
   title: "Black Grapes",
   price: 7.05,
   unit: "5.0 lbs",
   image: "grapes-31.png",
-  color: Color.fromARGB(255, 255, 232, 191),
+  color: Color.fromARGB(255, 230, 161, 229),
 );
 FeaturedProducts pomegranate = const FeaturedProducts(
   title: "Pomegranate",
   price: 2.09,
   unit: "1.50 lbs",
   image: "green-fresh-broccoli.png",
-  color: Color.fromARGB(255, 255, 232, 191),
+  color: Color.fromARGB(255, 215, 166, 193),
 );
 FeaturedProducts freshBroccoli = const FeaturedProducts(
   title: "Fresh Broccoli",
   price: 3.00,
   unit: "1 kg",
   image: "green-fresh-broccoli.png",
-  color: Color.fromARGB(255, 255, 232, 191),
+  color: Color.fromARGB(255, 166, 216, 144),
 );
 
 List<FeaturedProducts> featuredProducts = [
